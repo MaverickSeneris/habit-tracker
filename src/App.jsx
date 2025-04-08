@@ -22,6 +22,10 @@ function App() {
       title: "Nope",
       streak: [false, false, false, false, false, false, false], // 0 stars
     },
+    {
+      title: "Code",
+      streak: [true, true, false, false, false, false, false], // 0 stars
+    },
   ];
 
   // Load habits from localStorage or fallback to seed data
