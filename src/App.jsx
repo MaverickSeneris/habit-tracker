@@ -4,18 +4,42 @@ import HabitCard from './components/HabitCard';
 function App() {
   const [habits, setHabits] = useState([]);
 
-  // Load saved habits from localStorage when the component mounts
+  // Seed data for demo
+  const seedHabits = [
+    {
+      title: "Perfect Streak",
+      streak: [true, true, true, true, true, true, true], // 3 stars
+    },
+    {
+      title: "Almost There",
+      streak: [true, true, true, true, true, true, false], // 0 stars (since past false)
+    },
+    {
+      title: "Bare Minimum",
+      streak: [true, false, false, true, false, false, true], // 0 stars (since past false)
+    },
+    {
+      title: "Nope",
+      streak: [false, false, false, false, false, false, false], // 0 stars
+    },
+  ];
+
+  // Load habits from localStorage or fallback to seed data
   useEffect(() => {
     const savedHabits = JSON.parse(localStorage.getItem('habit-streaks'));
-    if (savedHabits) {
+    if (savedHabits && savedHabits.length > 0) {
       setHabits(savedHabits);
+    } else {
+      // If no habits are found in localStorage, use seed data
+      setHabits(seedHabits);
+      localStorage.setItem('habit-streaks', JSON.stringify(seedHabits)); // Store seed data in localStorage
     }
   }, []);
 
-  // Save habits to localStorage whenever the 'habits' state changes
+  // Save habits to localStorage whenever the habits state changes
   useEffect(() => {
     if (habits.length > 0) {
-      localStorage.setItem('habit-streaks', JSON.stringify(habits));
+      localStorage.setItem('habit-streaks', JSON.stringify(habits)); // Save habits to localStorage
     }
   }, [habits]);
 
