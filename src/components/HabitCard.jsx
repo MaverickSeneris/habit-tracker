@@ -9,7 +9,7 @@ function HabitCard({ title, streak, updateStreak, onDelete }) {
     updateStreak(newStreak);
   };
 
-  // Calculate stars based on the number of 'true' and green values in the streak
+  //Calculate stars based on the number of 'true' and green values in the streak
   // const getStars = () => {
   //   // If there are any 'false' days in the past, no stars should be awarded
   //   const hasRedPastDay = streak.some((day, index) => !day && index < todayIndex);
@@ -27,15 +27,20 @@ function HabitCard({ title, streak, updateStreak, onDelete }) {
   // };
 
   const getStars = () => {
-    const hasRedPastDay = streak.some((day, index) => !day && index < todayIndex);
-    if (hasRedPastDay) return 0;  // No stars for past failures
+    // Count only the green days (true) from past and present
+    const streakCount = streak.filter((day, index) => day === true).length;
   
-    const streakCount = streak.filter((day, index) => day === true && index >= todayIndex).length;
+    // // If there are any false days in the past, no stars should be awarded
+    // const hasRedPastDay = streak.some((day, index) => !day && index < todayIndex);
     
-    if (streakCount === 7) return 3;
-    if (streakCount >= 3) return 2;
-    if (streakCount >= 1) return 1;
-    return 0;
+    // // If there's a red past day, return 0 stars
+    // if (hasRedPastDay) return 0;
+  
+    // Award stars based on the streak count
+    if (streakCount === 7) return 3; // 7 days streak
+    if (streakCount >= 3) return 2; // 3 or more days streak
+    if (streakCount >= 1) return 1; // 1 or more days streak
+    return 0; // No streak
   };
   
 
