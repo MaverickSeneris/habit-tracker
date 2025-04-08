@@ -10,21 +10,34 @@ function HabitCard({ title, streak, updateStreak, onDelete }) {
   };
 
   // Calculate stars based on the number of 'true' and green values in the streak
-  const getStars = () => {
-    // If there are any 'false' days in the past, no stars should be awarded
-    const hasRedPastDay = streak.some((day, index) => !day && index < todayIndex);
+  // const getStars = () => {
+  //   // If there are any 'false' days in the past, no stars should be awarded
+  //   const hasRedPastDay = streak.some((day, index) => !day && index < todayIndex);
     
-    // If there's a past 'false' day, no stars are awarded
-    if (hasRedPastDay) return 0;
+  //   // If there's a past 'false' day, no stars are awarded
+  //   if (hasRedPastDay) return 0;
 
-    // Count only 'true' and green days
+  //   // Count only 'true' and green days
+  //   const streakCount = streak.filter((day, index) => day === true && index >= todayIndex).length;
+
+  //   if (streakCount === 7) return 3;
+  //   if (streakCount >= 3) return 2;
+  //   if (streakCount >= 1) return 1;
+  //   return 0;
+  // };
+
+  const getStars = () => {
+    const hasRedPastDay = streak.some((day, index) => !day && index < todayIndex);
+    if (hasRedPastDay) return 0;  // No stars for past failures
+  
     const streakCount = streak.filter((day, index) => day === true && index >= todayIndex).length;
-
+    
     if (streakCount === 7) return 3;
     if (streakCount >= 3) return 2;
     if (streakCount >= 1) return 1;
     return 0;
   };
+  
 
   return (
     <div className="relative habit-card mt-4 p-4 border rounded-lg shadow-md bg-black text-white">

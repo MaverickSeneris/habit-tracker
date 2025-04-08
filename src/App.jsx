@@ -16,7 +16,7 @@ function App() {
     },
     {
       title: "Bare Minimum",
-      streak: [true, false, false, true, false, false, true], // 0 stars (since past false)
+      streak: [true, true, true, false, false, false, false], // 0 stars (since past false)
     },
     {
       title: "Nope",
