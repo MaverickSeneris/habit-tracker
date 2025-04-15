@@ -24,7 +24,7 @@ function App() {
     },
     {
       title: "Code",
-      streak: [true, true, false, false, false, false, false], // 0 stars
+      streak: [true, true, false, false, false, false], // 0 stars
     },
   ];
 
@@ -71,6 +71,8 @@ function App() {
     setHabits(updatedHabits);
     localStorage.setItem("habit-streaks", JSON.stringify(updatedHabits)); // Save immediately after deletion
   };
+
+  console.log(habits)
 
   return (
     <div className="app p-8">
