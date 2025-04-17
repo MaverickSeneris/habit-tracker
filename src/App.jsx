@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import FormInput from "./components/FormInput";
 import HabitsList from "./components/HabitsList";
-import HabitCard from "./components/HabitCard";
 import seedHabits from "./seedData/seedData";
 
 function App() {
