@@ -10,7 +10,7 @@ function HabitCard({ title, streak, updateStreak, onDelete }) {
   };
 
   const getStars = () => {
-    // Count only the green days (true) from past and present
+    // Count only the green days (true) from past and presentT
     const streakCount = streak.filter((day, index) => day === true).length;
   
     // Award stars based on the streak count
