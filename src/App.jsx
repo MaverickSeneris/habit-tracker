@@ -50,6 +50,7 @@ function App() {
     localStorage.setItem("habit-streaks", JSON.stringify(updatedHabits)); // Save immediately after deletion
   };
 
+  // Update a habit
   const updateHabits = (updatedHabits) => {
     setHabits(updatedHabits);
   };
